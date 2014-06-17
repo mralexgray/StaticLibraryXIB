@@ -6,8 +6,7 @@
 //  Copyright (c) 2013 Niels Gabel. All rights reserved.
 //
 
-#import <AppKit/AppKit.h>
-
+@import AppKit;
 @class StaticLibraryWindowController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Niels Gabel. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import AppKit;
 
 @interface StaticLibraryWindowController : NSWindowController
 

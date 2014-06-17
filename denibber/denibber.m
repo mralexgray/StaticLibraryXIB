@@ -14,7 +14,7 @@ NSString* runCommand	(NSString* c) {	NSString* outP;	FILE *read_fp;	char buffer[
 
 	memset(buffer, '\0', sizeof(buffer));
 	if (!(read_fp = popen(c.UTF8String, "r"))) return nil;
-  if ((chars_read = fread(buffer, sizeof(char), BUFSIZ, read_fp))) outP = [NSString stringWithUTF8String:buffer];
+  if ((chars_read = fread(buffer, sizeof(char), BUFSIZ, read_fp))) outP = @(buffer);
   pclose(read_fp);
 	return outP;
 }

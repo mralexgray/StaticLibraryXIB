@@ -1,5 +1,5 @@
 
-@import AppKit;
+
 #import "StaticLibraryWindowController.h"
 
 @interface NSNib (StaticLibraryWindowController)

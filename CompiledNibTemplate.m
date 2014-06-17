@@ -1,5 +1,5 @@
 
-#import <Cocoa/Cocoa.h>
+@import AppKit;
 
 @implementation NSNib (NIB_NAME)
 
