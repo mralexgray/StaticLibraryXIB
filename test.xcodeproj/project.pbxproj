@@ -6,9 +6,24 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		7B0FE55A194FC53500805775 /* Scripted */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7B0FE55B194FC53600805775 /* Build configuration list for PBXAggregateTarget "Scripted" */;
+			buildPhases = (
+				7B0FE55E194FC54700805775 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Scripted;
+			productName = Scripted;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		7B0FE552194FC0BF00805775 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0FE551194FC0BF00805775 /* MainMenu.xib */; };
-		D9996F1318262EED009366EB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9996EC118262485009366EB /* Cocoa.framework */; };
+		7B0FE567194FC5B900805775 /* denibber.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0FE566194FC5B900805775 /* denibber.m */; };
+		7B0FE571194FDFAE00805775 /* RunLoopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0FE570194FDFAE00805775 /* RunLoopController.m */; };
 		D9996F2218262EED009366EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9996F2118262EED009366EB /* AppDelegate.m */; };
 		D9996F4118262F23009366EB /* libNibTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9363F681825DFBE00D68893 /* libNibTest.a */; };
 		D9996F4518263275009366EB /* StaticLibraryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9996F4318263275009366EB /* StaticLibraryWindowController.m */; };
@@ -24,7 +39,7 @@
 			outputFiles = (
 				"${INPUT_FILE_BASE}.nib.m",
 			);
-			script = "#! /usr/bin/bash\nINPUT_BASE_NIB=\"${TARGET_TEMP_DIR}/${INPUT_FILE_BASE}.nib\"\n    INPUT_FILE=\"${INPUT_FILE_DIR}/${INPUT_FILE_NAME}\"\n/usr/bin/ibtool --output-format human-readable-text --compile \"$INPUT_BASE_NIB\" \"$INPUT_FILE\"\n   HEX_DUMP=`hexdump -v -e '1 1 \"0x%02x, \"' \"$INPUT_BASE_NIB\"`\nDATA_LENGTH=`stat -f \"%z\" \"$INPUT_BASE_NIB\"`\nsed -e \"s/HEX_DUMP/$HEX_DUMP/\" \\\n    -e \"s/NIB_NAME/${INPUT_FILE_BASE}/g\" \\\n    -e \"s/HEX_LENGTH/$DATA_LENGTH/g\" \"${SRCROOT}/CompiledNibTemplate.m\" \\\n     > \"$DERIVED_FILE_DIR/$INPUT_FILE_BASE.nib.m\"\n";
+			script = "#! /usr/bin/bash\nINPUT_BASE_NIB=\"${TARGET_TEMP_DIR}/${INPUT_FILE_BASE}.nib\"\n    INPUT_FILE=\"${INPUT_FILE_DIR}/${INPUT_FILE_NAME}\"\n/usr/bin/ibtool --output-format human-readable-text --compile \"$INPUT_BASE_NIB\" \"$INPUT_FILE\"\n\nlogger \"/usr/bin/ibtool --output-format human-readable-text --compile $INPUT_BASE_NIB $INPUT_FILE\"\n\n\n#   HEX_DUMP=`hexdump -v -e '1 1 \"0x%02x, \"' \"$INPUT_BASE_NIB\"`\n#DATA_LENGTH=`stat -f \"%z\" \"$INPUT_BASE_NIB\"`\n#sed -e \"s/HEX_DUMP/$HEX_DUMP/\" \\\n    -e \"s/NIB_NAME/${INPUT_FILE_BASE}/g\" \\\n    -e \"s/HEX_LENGTH/$DATA_LENGTH/g\" \"${SRCROOT}/CompiledNibTemplate.m\" \\\n     > \"$DERIVED_FILE_DIR/$INPUT_FILE_BASE.nib.m\"\n\n#$(which finder) reveal \"$DERIVED_FILE_DIR/$INPUT_FILE_BASE.nib.m\"";
 		};
 /* End PBXBuildRule section */
 
@@ -38,17 +53,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7B0FE561194FC5B900805775 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7B0FE551194FC0BF00805775 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
-		D9363F561825DFA900D68893 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7B0FE559194FC34E00805775 /* xib.compile.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = xib.compile.sh; path = ../xib.compile.sh; sourceTree = "<group>"; };
+		7B0FE563194FC5B900805775 /* denibber */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = denibber; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B0FE566194FC5B900805775 /* denibber.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = denibber.m; sourceTree = "<group>"; };
+		7B0FE56F194FDFAE00805775 /* RunLoopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunLoopController.h; path = ../../nyancat/nyancatX/atozio/RunLoopController/RunLoopController.h; sourceTree = "<group>"; };
+		7B0FE570194FDFAE00805775 /* RunLoopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RunLoopController.m; path = ../../nyancat/nyancatX/atozio/RunLoopController/RunLoopController.m; sourceTree = "<group>"; };
 		D9363F681825DFBE00D68893 /* libNibTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNibTest.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9363F761825DFBE00D68893 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D9363F791825DFBE00D68893 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D9996EBF1825F17D009366EB /* CompiledNibTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompiledNibTemplate.m; path = ../CompiledNibTemplate.m; sourceTree = "<group>"; };
-		D9996EC118262485009366EB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		D9996ECA182624C8009366EB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		D9996ECB182624C8009366EB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		D9996ECC182624C8009366EB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9996F1218262EED009366EB /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9996F1618262EED009366EB /* test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "test-Info.plist"; sourceTree = "<group>"; };
 		D9996F2018262EED009366EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -59,24 +84,41 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7B0FE560194FC5B900805775 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9996F0F18262EED009366EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D9996F4118262F23009366EB /* libNibTest.a in Frameworks */,
-				D9996F1318262EED009366EB /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B0FE565194FC5B900805775 /* denibber */ = {
+			isa = PBXGroup;
+			children = (
+				7B0FE559194FC34E00805775 /* xib.compile.sh */,
+				7B0FE56F194FDFAE00805775 /* RunLoopController.h */,
+				7B0FE570194FDFAE00805775 /* RunLoopController.m */,
+				7B0FE566194FC5B900805775 /* denibber.m */,
+			);
+			path = denibber;
+			sourceTree = "<group>";
+		};
 		D9363F4A1825DFA900D68893 = {
 			isa = PBXGroup;
 			children = (
 				D9363F6A1825DFBE00D68893 /* NibTest */,
 				D9996F1418262EED009366EB /* test */,
-				D9363F551825DFA900D68893 /* Frameworks */,
+				7B0FE565194FC5B900805775 /* denibber */,
 				D9363F541825DFA900D68893 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,20 +128,9 @@
 			children = (
 				D9363F681825DFBE00D68893 /* libNibTest.a */,
 				D9996F1218262EED009366EB /* test.app */,
+				7B0FE563194FC5B900805775 /* denibber */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D9363F551825DFA900D68893 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D9996EC118262485009366EB /* Cocoa.framework */,
-				D9363F561825DFA900D68893 /* Foundation.framework */,
-				D9363F761825DFBE00D68893 /* XCTest.framework */,
-				D9363F791825DFBE00D68893 /* UIKit.framework */,
-				D9996EC9182624C8009366EB /* Other Frameworks */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D9363F6A1825DFBE00D68893 /* NibTest */ = {
@@ -111,16 +142,6 @@
 				D9996F4418263275009366EB /* StaticLibraryWindowController.xib */,
 			);
 			path = NibTest;
-			sourceTree = "<group>";
-		};
-		D9996EC9182624C8009366EB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D9996ECA182624C8009366EB /* AppKit.framework */,
-				D9996ECB182624C8009366EB /* CoreData.framework */,
-				D9996ECC182624C8009366EB /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
 		D9996F1418262EED009366EB /* test */ = {
@@ -137,6 +158,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7B0FE562194FC5B900805775 /* denibber */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B0FE56C194FC5B900805775 /* Build configuration list for PBXNativeTarget "denibber" */;
+			buildPhases = (
+				7B0FE55F194FC5B900805775 /* Sources */,
+				7B0FE560194FC5B900805775 /* Frameworks */,
+				7B0FE561194FC5B900805775 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = denibber;
+			productName = denibber;
+			productReference = 7B0FE563194FC5B900805775 /* denibber */;
+			productType = "com.apple.product-type.tool";
+		};
 		D9363F671825DFBE00D68893 /* NibTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9363F861825DFBE00D68893 /* Build configuration list for PBXNativeTarget "NibTest" */;
@@ -195,6 +233,8 @@
 			targets = (
 				D9363F671825DFBE00D68893 /* NibTest */,
 				D9996F1118262EED009366EB /* test */,
+				7B0FE55A194FC53500805775 /* Scripted */,
+				7B0FE562194FC5B900805775 /* denibber */,
 			);
 		};
 /* End PBXProject section */
@@ -210,7 +250,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7B0FE55E194FC54700805775 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		7B0FE55F194FC5B900805775 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B0FE567194FC5B900805775 /* denibber.m in Sources */,
+				7B0FE571194FDFAE00805775 /* RunLoopController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9363F641825DFBE00D68893 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +304,42 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		7B0FE55C194FC53600805775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7B0FE55D194FC53600805775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7B0FE56D194FC5B900805775 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7B0FE56E194FC5B900805775 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D9363F5F1825DFA900D68893 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -367,6 +468,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7B0FE55B194FC53600805775 /* Build configuration list for PBXAggregateTarget "Scripted" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B0FE55C194FC53600805775 /* Debug */,
+				7B0FE55D194FC53600805775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7B0FE56C194FC5B900805775 /* Build configuration list for PBXNativeTarget "denibber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B0FE56D194FC5B900805775 /* Debug */,
+				7B0FE56E194FC5B900805775 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D9363F4E1825DFA900D68893 /* Build configuration list for PBXProject "test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
