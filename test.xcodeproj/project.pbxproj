@@ -7,14 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D9363F691825DFBE00D68893 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9363F561825DFA900D68893 /* Foundation.framework */; };
+		7B0FE552194FC0BF00805775 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0FE551194FC0BF00805775 /* MainMenu.xib */; };
 		D9996F1318262EED009366EB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9996EC118262485009366EB /* Cocoa.framework */; };
-		D9996F1918262EED009366EB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9996F1718262EED009366EB /* InfoPlist.strings */; };
-		D9996F1B18262EED009366EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9996F1A18262EED009366EB /* main.m */; };
-		D9996F1F18262EED009366EB /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D9996F1D18262EED009366EB /* Credits.rtf */; };
 		D9996F2218262EED009366EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9996F2118262EED009366EB /* AppDelegate.m */; };
-		D9996F2518262EED009366EB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9996F2318262EED009366EB /* MainMenu.xib */; };
-		D9996F2718262EED009366EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9996F2618262EED009366EB /* Images.xcassets */; };
 		D9996F4118262F23009366EB /* libNibTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9363F681825DFBE00D68893 /* libNibTest.a */; };
 		D9996F4518263275009366EB /* StaticLibraryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9996F4318263275009366EB /* StaticLibraryWindowController.m */; };
 		D9ADE6FB182633F900C05BDC /* StaticLibraryWindowController.xib in Sources */ = {isa = PBXBuildFile; fileRef = D9996F4418263275009366EB /* StaticLibraryWindowController.xib */; };
@@ -29,7 +24,7 @@
 			outputFiles = (
 				"${INPUT_FILE_BASE}.nib.m",
 			);
-			script = "#! /usr/bin/bash\n/usr/bin/ibtool --output-format human-readable-text --compile \"$TARGET_TEMP_DIR/$INPUT_FILE_BASE.nib\" \"$INPUT_FILE_DIR/$INPUT_FILE_NAME\"\nHexdump=`hexdump -v -e '1 1 \"0x%02x, \"' \"$TARGET_TEMP_DIR/${INPUT_FILE_BASE}.nib\"`\nDatalength=`stat -f \"%z\" ${TARGET_TEMP_DIR}/${INPUT_FILE_BASE}.nib`\nsed -e \"s/HEX_DUMP/$Hexdump/\" -e \"s/NIB_NAME/${INPUT_FILE_BASE}/g\" -e \"s/HEX_LENGTH/$Datalength/g\" \"${SRCROOT}/NibTest/CompiledNibTemplate.m\" > \"$DERIVED_FILE_DIR/$INPUT_FILE_BASE.nib.m\"\n";
+			script = "#! /usr/bin/bash\nINPUT_BASE_NIB=\"${TARGET_TEMP_DIR}/${INPUT_FILE_BASE}.nib\"\n    INPUT_FILE=\"${INPUT_FILE_DIR}/${INPUT_FILE_NAME}\"\n/usr/bin/ibtool --output-format human-readable-text --compile \"$INPUT_BASE_NIB\" \"$INPUT_FILE\"\n   HEX_DUMP=`hexdump -v -e '1 1 \"0x%02x, \"' \"$INPUT_BASE_NIB\"`\nDATA_LENGTH=`stat -f \"%z\" \"$INPUT_BASE_NIB\"`\nsed -e \"s/HEX_DUMP/$HEX_DUMP/\" \\\n    -e \"s/NIB_NAME/${INPUT_FILE_BASE}/g\" \\\n    -e \"s/HEX_LENGTH/$DATA_LENGTH/g\" \"${SRCROOT}/CompiledNibTemplate.m\" \\\n     > \"$DERIVED_FILE_DIR/$INPUT_FILE_BASE.nib.m\"\n";
 		};
 /* End PBXBuildRule section */
 
@@ -43,53 +38,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		D9363F661825DFBE00D68893 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		7B0FE551194FC0BF00805775 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		D9363F561825DFA900D68893 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9363F681825DFBE00D68893 /* libNibTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNibTest.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9363F6C1825DFBE00D68893 /* NibTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NibTest-Prefix.pch"; sourceTree = "<group>"; };
 		D9363F761825DFBE00D68893 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D9363F791825DFBE00D68893 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D9996EBF1825F17D009366EB /* CompiledNibTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompiledNibTemplate.m; sourceTree = "<group>"; };
+		D9996EBF1825F17D009366EB /* CompiledNibTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompiledNibTemplate.m; path = ../CompiledNibTemplate.m; sourceTree = "<group>"; };
 		D9996EC118262485009366EB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D9996ECA182624C8009366EB /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D9996ECB182624C8009366EB /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D9996ECC182624C8009366EB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9996F1218262EED009366EB /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9996F1618262EED009366EB /* test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "test-Info.plist"; sourceTree = "<group>"; };
-		D9996F1818262EED009366EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D9996F1A18262EED009366EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D9996F1C18262EED009366EB /* test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "test-Prefix.pch"; sourceTree = "<group>"; };
-		D9996F1E18262EED009366EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		D9996F2018262EED009366EB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D9996F2118262EED009366EB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D9996F2418262EED009366EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		D9996F2618262EED009366EB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9996F4218263275009366EB /* StaticLibraryWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticLibraryWindowController.h; sourceTree = SOURCE_ROOT; };
 		D9996F4318263275009366EB /* StaticLibraryWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticLibraryWindowController.m; sourceTree = SOURCE_ROOT; };
 		D9996F4418263275009366EB /* StaticLibraryWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticLibraryWindowController.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D9363F651825DFBE00D68893 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D9363F691825DFBE00D68893 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D9996F0F18262EED009366EB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -136,21 +105,12 @@
 		D9363F6A1825DFBE00D68893 /* NibTest */ = {
 			isa = PBXGroup;
 			children = (
-				D9363F6B1825DFBE00D68893 /* Supporting Files */,
 				D9996EBF1825F17D009366EB /* CompiledNibTemplate.m */,
 				D9996F4218263275009366EB /* StaticLibraryWindowController.h */,
 				D9996F4318263275009366EB /* StaticLibraryWindowController.m */,
 				D9996F4418263275009366EB /* StaticLibraryWindowController.xib */,
 			);
 			path = NibTest;
-			sourceTree = "<group>";
-		};
-		D9363F6B1825DFBE00D68893 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D9363F6C1825DFBE00D68893 /* NibTest-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D9996EC9182624C8009366EB /* Other Frameworks */ = {
@@ -168,23 +128,10 @@
 			children = (
 				D9996F2018262EED009366EB /* AppDelegate.h */,
 				D9996F2118262EED009366EB /* AppDelegate.m */,
-				D9996F2318262EED009366EB /* MainMenu.xib */,
-				D9996F2618262EED009366EB /* Images.xcassets */,
-				D9996F1518262EED009366EB /* Supporting Files */,
+				7B0FE551194FC0BF00805775 /* MainMenu.xib */,
+				D9996F1618262EED009366EB /* test-Info.plist */,
 			);
 			path = test;
-			sourceTree = "<group>";
-		};
-		D9996F1518262EED009366EB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D9996F1618262EED009366EB /* test-Info.plist */,
-				D9996F1718262EED009366EB /* InfoPlist.strings */,
-				D9996F1A18262EED009366EB /* main.m */,
-				D9996F1C18262EED009366EB /* test-Prefix.pch */,
-				D9996F1D18262EED009366EB /* Credits.rtf */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,8 +142,6 @@
 			buildConfigurationList = D9363F861825DFBE00D68893 /* Build configuration list for PBXNativeTarget "NibTest" */;
 			buildPhases = (
 				D9363F641825DFBE00D68893 /* Sources */,
-				D9363F651825DFBE00D68893 /* Frameworks */,
-				D9363F661825DFBE00D68893 /* CopyFiles */,
 			);
 			buildRules = (
 				D9996EBE1825F15A009366EB /* PBXBuildRule */,
@@ -259,10 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9996F1918262EED009366EB /* InfoPlist.strings in Resources */,
-				D9996F2718262EED009366EB /* Images.xcassets in Resources */,
-				D9996F1F18262EED009366EB /* Credits.rtf in Resources */,
-				D9996F2518262EED009366EB /* MainMenu.xib in Resources */,
+				7B0FE552194FC0BF00805775 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +225,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9996F2218262EED009366EB /* AppDelegate.m in Sources */,
-				D9996F1B18262EED009366EB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,33 +237,6 @@
 			targetProxy = D9996F3F18262F20009366EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D9996F1718262EED009366EB /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9996F1818262EED009366EB /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D9996F1D18262EED009366EB /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9996F1E18262EED009366EB /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		D9996F2318262EED009366EB /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9996F2418262EED009366EB /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D9363F5F1825DFA900D68893 /* Debug */ = {
@@ -396,11 +310,7 @@
 		D9363F871825DFBE00D68893 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
-				DSTROOT = /tmp/NibTest.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NibTest/NibTest-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -416,11 +326,7 @@
 		D9363F881825DFBE00D68893 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
-				DSTROOT = /tmp/NibTest.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NibTest/NibTest-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -435,8 +341,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "test/test-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -453,8 +357,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "test/test-Prefix.pch";
 				INFOPLIST_FILE = "test/test-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

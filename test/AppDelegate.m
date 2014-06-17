@@ -10,7 +10,7 @@
 #import "StaticLibraryWindowController.h"
 
 @interface AppDelegate ()
-@property (nonatomic, strong ) StaticLibraryWindowController * testController ;
+
 @end
 
 @implementation AppDelegate
@@ -21,3 +21,10 @@
 }
 
 @end
+
+
+
+int main(int argc, const char * argv[])
+{
+	return NSApplicationMain(argc, argv);
+}

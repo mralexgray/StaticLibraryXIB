@@ -10,6 +10,6 @@
 
 @interface StaticLibraryWindowController : NSWindowController
 
-+(instancetype)controller ;
++ (instancetype) controller;
 	
 @end

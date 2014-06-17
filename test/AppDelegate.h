@@ -6,10 +6,14 @@
 //  Copyright (c) 2013 Niels Gabel. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
+
+@class StaticLibraryWindowController;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
-@property ( nonatomic, strong ) NSWindow * otherWindow ;
+@property (assign) IBOutlet    NSWindow * window;
+@property                      NSWindow * otherWindow;
+@property StaticLibraryWindowController * testController;
+
 @end
